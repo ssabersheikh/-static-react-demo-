@@ -17,9 +17,9 @@ jobs:
         run: npm run build
       - name: Clean install CDK and dependencies
         working-directory: ./cdk
-        run: npm cdk
+        run: npm ci
       - name: Configure AWS credentials
-        use: aws-actions/configure-aws-credentials@v1
+        uses: aws-actions/configure-aws-credentials@v1
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
@@ -30,6 +30,4 @@ jobs:
       - name: CDK deploy
         working-directory: ./cdk
         run: npx cdk deploy --require-approval never
-
-
 
